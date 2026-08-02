@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  GitHub Releases for the official NOVA SDKs: wandelbotsgmbh/wandelbots-nova
+  (Python) and wandelbotsgmbh/nova-js (TypeScript). NOVA platform itself uses a
+  calendar-style release train (e.g. 25.9, 26.5, 26.6). No single dated
+  platform-wide changelog page was captured; SDK release history is the most
+  reliable dated signal.
+provider: Wandelbots
+scheme: semver (SDKs) / calendar (NOVA platform, e.g. 26.5)
+sources:
+- name: NOVA Python SDK releases
+  url: https://github.com/wandelbotsgmbh/wandelbots-nova/releases
+  current_version: 5.8.0
+- name: NOVA JS/TS client releases
+  url: https://github.com/wandelbotsgmbh/nova-js/releases
+  current_version: 4.0.0
+entries:
+- component: wandelbots-nova (Python SDK)
+  version: 5.8.0
+  date: '2026-07-20'
+- component: nova-js (TypeScript client)
+  version: 4.0.0
+  date: '2026-07-21'
+  breaking: true
+  highlights: Major version bump (v3.x -> v4.0.0).
+- component: wandelbots-nova (Python SDK)
+  version: 5.7.6
+  date: '2026-07-16'
+- component: wandelbots-nova (Python SDK)
+  version: 5.7.0
+  date: '2026-07-01'
+notes: |
+  Platform lifecycle note: NOVA API v1 and Wandelscript are announced for removal
+  in NOVA 26.6 — migrate to NOVA API v2 and the Python SDK. See
+  lifecycle/wandelbots-lifecycle.yml.

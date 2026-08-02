@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  Wandelbots NOVA documentation (docs.wandelbots.io) and SDK release history.
+  NOVA ships on a calendar-versioned release train (e.g. 25.5, 25.7, 25.9, 26.5,
+  26.6). A documented deprecation is in flight: NOVA API v1 and the Wandelscript
+  DSL are announced for removal in NOVA 26.6.
+provider: Wandelbots
+api: Wandelbots NOVA API
+versioning:
+  scheme: |
+    NOVA platform uses calendar-style release versions (YY.MINOR, e.g. 26.5).
+    The NOVA API is path-versioned: /api/v1 (legacy) and /api/v2 (current,
+    documented as experimental and subject to change).
+  current_api_version: v2
+  legacy_api_version: v1
+  docs: https://docs.wandelbots.io/25.9/nova-api
+deprecations:
+- what: NOVA API v1
+  status: deprecated
+  removal_target: NOVA 26.6
+  migration: Migrate API calls to NOVA API v2.
+  source: https://docs.wandelbots.io/25.9/nova-api
+- what: Wandelscript (robot-programming DSL)
+  status: deprecated
+  removal_target: NOVA 26.6
+  migration: Migrate robot programs to the Python SDK (wandelbots-nova).
+  source: https://docs.wandelbots.io/25.9/nova-api
+stability:
+  notes: |
+    NOVA API v2 is documented as "currently in an experimental state and may
+    change in future releases." Breaking changes are communicated via the
+    calendar release train and SDK major-version bumps.
+status_page: null
+sla: null
+notes: |
+  No public RFC 8594 Sunset/Deprecation HTTP header policy or dedicated status
+  page was located during this pass; deprecation is communicated via release
+  documentation and the migration guide.

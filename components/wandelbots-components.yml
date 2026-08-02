@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  npm @wandelbots/wandelbots-js-react-components (React UI toolkit for building
+  applications on top of the Wandelbots platform) and supporting example repos in
+  the wandelbotsgmbh GitHub org (jogging, robot-visualization, safety-zones).
+provider: Wandelbots
+loaders:
+- name: '@wandelbots/wandelbots-js-react-components'
+  ecosystem: npm
+  version: 5.9.1
+  registry_url: https://www.npmjs.com/package/@wandelbots/wandelbots-js-react-components
+  source_url: https://github.com/wandelbotsgmbh/wandelbots-js-react-components
+families:
+- family: Robot visualization
+  description: React components for rendering and moving a connected robot / 3D robot scene in-browser.
+  components:
+  - name: Robot / cell 3D visualization
+    kind: react-component
+- family: Jogging
+  description: UI component for jogging (manually moving) a connected robot via the NOVA Jogging API.
+  components:
+  - name: Jogging panel
+    kind: react-component
+- family: Safety zones
+  description: Component to display the configured safety zones of a connected robot.
+  components:
+  - name: Safety zones view
+    kind: react-component
+notes: |
+  Distinct from the language SDKs (packages/). These are client-side, embeddable
+  React UI building blocks for robot apps; example integrations live in
+  wandelbotsgmbh/wandelbots-js-jogging, wandelbots-js-robot-visualization and
+  wandelbots-js-safety-zones.

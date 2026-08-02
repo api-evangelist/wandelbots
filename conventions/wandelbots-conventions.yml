@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  Wandelbots NOVA API documentation (docs.wandelbots.io/*/nova-api) and SDK
+  READMEs. Captures cross-cutting runtime semantics of the NOVA API v2.
+provider: Wandelbots
+api: Wandelbots NOVA API
+auth:
+  style: Bearer access token (per-instance, issued in Developer Portal; env NOVA_ACCESS_TOKEN).
+  ref: ../authentication/wandelbots-authentication.yml
+base_path:
+  pattern: '<instance-host>/api/v2'
+  note: The API is served from each NOVA instance (Cloud or on-prem appliance); the host is instance-specific rather than a single multi-tenant base URL.
+resource_model:
+  root: cell
+  pattern: |
+    Resources are scoped under a cell:
+    /api/v2/cells/{cell}/controllers,
+    /api/v2/cells/{cell}/motion-groups/{motion-group}/state,
+    /api/v2/cells/{cell}/motion-planning/plan-trajectory,
+    /api/v2/cells/{cell}/execution/trajectory,
+    /api/v2/cells/{cell}/execute, /api/v2/cells/{cell}/runs.
+streaming:
+  supported: true
+  transport: WebSocket
+  examples:
+  - GET /api/v2/cells/{cell}/execution/trajectory (trajectory execution stream)
+  note: Real-time robot state and trajectory execution use WebSocket connections (ws://<instance>/api/v2/...).
+limits:
+  request_body_max: 100MB
+versioning:
+  style: path (/api/v1 legacy, /api/v2 current)
+  ref: ../lifecycle/wandelbots-lifecycle.yml
+idempotency:
+  supported: unknown
+  note: No documented idempotency-key header convention was found for the NOVA API during this pass.
+pagination:
+  style: unknown
+  note: Not documented in the reviewed API pages.
+errors:
+  ref: ../errors/wandelbots-problem-types.yml
+  note: A structured RFC 9457 problem+json envelope was not confirmed from public docs during this pass.
+tooling:
+  swagger_ui: '<instance-host>/api/v2/ui'
+notes: |
+  NOVA is a self-hostable / cloud robot-control platform; many runtime conventions
+  (pagination, idempotency, error envelope) are best confirmed against a live
+  instance's Swagger UI at /api/v2/ui, which was not reachable as a public
+  multi-tenant endpoint during this pass.

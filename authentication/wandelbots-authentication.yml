@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  Wandelbots NOVA API documentation (docs.wandelbots.io/*/nova-api) and the NOVA
+  SDK README (github.com/wandelbotsgmbh/wandelbots-nova). Documented auth: an
+  access token issued per-instance in the Developer Portal, supplied to the API /
+  SDK as a bearer token (env var NOVA_ACCESS_TOKEN, mandatory for the Wandelbots
+  Cloud environment).
+docs: https://docs.wandelbots.io/25.9/nova-api
+provider: Wandelbots
+api: Wandelbots NOVA API
+schemes:
+- id: nova_access_token
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: Bearer <access token>
+  env: NOVA_ACCESS_TOKEN
+  description: |
+    Per-instance access token issued in the Wandelbots NOVA Developer Portal.
+    Passed as an Authorization: Bearer <token> header on NOVA API requests and via
+    the NOVA_ACCESS_TOKEN environment variable when using the Python/TypeScript
+    SDKs. Mandatory for the Wandelbots Cloud environment; local/on-prem instances
+    may be reachable without a token depending on deployment.
+default_scheme: nova_access_token
+notes: |
+  The NOVA API is served from each NOVA instance (Cloud or on-prem appliance) at
+  <instance-host>/api/v2. There is no public multi-tenant OAuth2 authorization
+  server documented; authentication is a portal-issued bearer access token.

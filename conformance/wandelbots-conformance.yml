@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: |
+  Derived from Wandelbots NOVA API documentation, SDK/auth behavior, and the
+  wandelbotsgmbh GitHub org (notably nova-vda5050, a VDA5050 V3.0.0 shared library,
+  and the NVIDIA Isaac Sim / OpenUSD integration repos). Cross-cutting API
+  standards are asserted with evidence; absence is recorded honestly.
+provider: Wandelbots
+api: Wandelbots NOVA API
+conformance:
+- id: vda5050
+  name: VDA 5050 (AGV / mobile-robot interface, V3.0.0)
+  conforms: true
+  evidence: Official nova-vda5050 repository — "VDA5050 V3.0.0 shared Python library for Nova platform connectors" (github.com/wandelbotsgmbh/nova-vda5050).
+- id: openusd
+  name: OpenUSD (Universal Scene Description)
+  conforms: true
+  evidence: wandelbots-openusd-schema-extension — IsaacSim OpenUSD schema extension including NOVA api/primitives (github.com/wandelbotsgmbh/wandelbots-openusd-schema-extension).
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: NOVA API authenticates with a per-instance bearer access token issued in the Developer Portal; no OAuth 2.0 authorization server is documented.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: No OIDC discovery document served (portal.wandelbots.io returns the SPA shell for /.well-known/openid-configuration).
+- id: rfc9457
+  name: RFC 9457 Problem Details (application/problem+json)
+  conforms: unknown
+  evidence: A problem+json error envelope was not confirmed from public documentation during this pass.
+- id: fapi
+  name: FAPI
+  conforms: false
+  evidence: Not a financial-grade API; not applicable to a robot-control platform.
+notes: |
+  Wandelbots NOVA is an industrial robot-control platform; the most relevant
+  standards are robotics-interop (VDA5050, OpenUSD, NVIDIA Isaac Sim) rather than
+  web-API financial/healthcare profiles.

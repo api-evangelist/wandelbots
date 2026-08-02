@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  GitHub org wandelbotsgmbh: nova-cli (CLI for interacting with the Wandelbots
+  platform), nova-data-cli (CLI for working with data produced by
+  nova-data-collection). Distributed via Homebrew tap and winget.
+provider: Wandelbots
+clis:
+- name: nova
+  description: Command-line interface for interacting with the Wandelbots NOVA platform (managing instances, apps, and robot cells).
+  source_url: https://github.com/wandelbotsgmbh/nova-cli
+  install:
+  - method: homebrew
+    command: brew install wandelbotsgmbh/wandelbots/nova
+    source: https://github.com/wandelbotsgmbh/homebrew-wandelbots
+  - method: winget
+    source: https://github.com/wandelbotsgmbh/winget-pkgs
+- name: nova-data
+  description: CLI for working with data produced by NOVA data collection (imitation-learning / data workflows).
+  source_url: https://github.com/wandelbotsgmbh/nova-data-cli

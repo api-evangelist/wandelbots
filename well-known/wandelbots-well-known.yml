@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: probed
+source: |
+  Probed /.well-known/{security.txt,openid-configuration,oauth-authorization-server,api-catalog,ai-plugin.json}
+  and /llms.txt across the Wandelbots hosts. No real well-known documents were
+  found: wandelbots.com returns HTTP 400 (WAF) for well-known paths;
+  docs.wandelbots.io returns 404; portal.wandelbots.io returns HTTP 200 for ALL
+  paths but serves the SPA HTML shell (text/html) rather than the requested
+  document, so those 200s are false positives and are recorded as not-present.
+provider: Wandelbots
+results:
+- host: www.wandelbots.com
+  path: /llms.txt
+  status: 200
+  content_type: text/plain
+  present: true
+  file: ../llms/wandelbots-llms.txt
+- host: wandelbots.com
+  path: /.well-known/security.txt
+  status: 400
+  present: false
+- host: wandelbots.com
+  path: /.well-known/openid-configuration
+  status: 400
+  present: false
+- host: wandelbots.com
+  path: /.well-known/oauth-authorization-server
+  status: 400
+  present: false
+- host: wandelbots.com
+  path: /.well-known/api-catalog
+  status: 400
+  present: false
+- host: wandelbots.com
+  path: /.well-known/ai-plugin.json
+  status: 400
+  present: false
+- host: portal.wandelbots.io
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  present: false
+  note: SPA shell returned for all paths; not a real openid-configuration document.
+- host: portal.wandelbots.io
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  present: false
+  note: SPA shell returned for all paths; not a real security.txt.
+- host: docs.wandelbots.io
+  path: /.well-known/security.txt
+  status: 404
+  present: false
+- host: docs.wandelbots.io
+  path: /llms.txt
+  status: 404
+  present: false

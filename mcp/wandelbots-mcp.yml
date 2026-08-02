@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: |
+  Discovered via https://www.wandelbots.com/llms.txt — the wandelbots.com
+  marketing site is Wix-powered and exposes a hosted Model Context Protocol (MCP)
+  endpoint for agentic access to public site content. This is the Wix Site MCP
+  (site/content + Wix business-solution APIs), NOT the NOVA robotics control API.
+  No NOVA-API-specific hosted MCP server was found.
+provider: Wandelbots
+servers:
+- name: Wandelbots Site MCP (Wix)
+  status: live
+  transport: http
+  endpoint: https://www.wandelbots.com/_api/mcp
+  authentication: none
+  scope: Public marketing-site content and installed Wix business-solution APIs (not the NOVA robot-control API).
+  docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
+  discovered_via: https://www.wandelbots.com/llms.txt
+  tools:
+  - name: GetBusinessDetails
+    description: Retrieve business/site details such as timezone, email, phone, and address.
+  - name: SearchInSite
+    description: Search the site for information.
+  - name: SearchSiteApiDocs
+    description: Retrieve API documentation for the Wix business solutions installed on the site.
+  - name: GenerateVisitorToken
+    description: Generate a visitor token for calling site APIs.
+  - name: CallWixSiteAPI
+    description: Call a Wix site API endpoint.
+  - name: ReadFullDocsArticle
+    description: Read a full documentation article.
+  - name: ReadFullDocsMethodSchema
+    description: Read the full schema for a documented API method.
+notes: |
+  This MCP surfaces the public Wandelbots website (Wix), enabling AI agents to
+  retrieve live site content without scraping. The NOVA developer platform
+  (docs.wandelbots.io, portal.wandelbots.io) does not publish a separate hosted
+  MCP server as of this pass.
