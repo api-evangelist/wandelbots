@@ -9,7 +9,8 @@ source: |
 provider: Wandelbots
 servers:
 - name: Wandelbots Site MCP (Wix)
-  status: live
+  status: published
+  status_raw: live
   transport: http
   endpoint: https://www.wandelbots.com/_api/mcp
   authentication: none
